@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue - Ma Boutique</title>
+    <link rel="stylesheet" href="C:/Users/Amnesia/Documents/Duckduck/styles/catalogue.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Ma Boutique</h1>
+            </div>
+            <ul>
+                <li><a href="C:/Users/Amnesia/Documents/Duckduck/index.html">Accueil</a></li>
+                <li><a href="C:/Users/Amnesia/Documents/Duckduck/catalogue.html">Catalogue</a></li>
+                <li><a href="C:/Users/Amnesia/Documents/Duckduck/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Filtres (volet rétractable) -->
+        <aside class="filters" id="filters">
+            <div class="filters-header">
+                <span class="filters-title">Filtrer par</span>
+                <button class="filters-toggle" onclick="toggleFilters()">&#9776;</button>
+            </div>
+            <form id="filters-form">
+                <label for="size">Taille :</label>
+                <select id="size" name="size">
+                    <option value="">-- Sélectionner --</option>
+                    <option value="small">Petit</option>
+                    <option value="medium">Moyen</option>
+                    <option value="large">Grand</option>
+                </select>
+
+                <label for="color">Couleur :</label>
+                <select id="color" name="color">
+                    <option value="">-- Sélectionner --</option>
+                    <option value="white">Blanc</option>
+                    <option value="black">Noir</option>
+                    <option value="brown">Marron</option>
+                </select>
+
+                <label for="sex">Sexe :</label>
+                <select id="sex" name="sex">
+                    <option value="">-- Sélectionner --</option>
+                    <option value="male">Mâle</option>
+                    <option value="female">Femelle</option>
+                </select>
+
+                <label for="breed">Race :</label>
+                <select id="breed" name="breed">
+                    <option value="">-- Sélectionner --</option>
+                    <option value="mallard">Colvert</option>
+                    <option value="muskovy">Muscovy</option>
+                    <option value="pekin">Pékin</option>
+                </select>
+
+                <label for="weight">Poids :</label>
+                <select id="weight" name="weight">
+                    <option value="">-- Sélectionner --</option>
+                    <option value="light">Léger</option>
+                    <option value="medium">Moyen</option>
+                    <option value="heavy">Lourd</option>
+                </select>
+
+                <button type="submit">Appliquer les filtres</button>
+            </form>
+        </aside>
+
+        <!-- Contenu principal -->
+        <section class="catalogue">
+            <section class="products">
+                <h3>Nos Canards</h3>
+                <div class="products-grid">
+                    <div class="product">
+                        <img src="https://cdn.pixabay.com/photo/2017/01/14/02/22/duck-1978680_1280.png" alt="Canard 1">
+                        <h4>Canard 1</h4>
+                        <p>Taille: Moyen</p>
+                        <p>Couleur: Blanc</p>
+                        <p>Sexe: Mâle</p>
+                        <p>Race: Colvert</p>
+                        <p>Poids: Moyen</p>
+                    </div>
+                    <div class="product">
+                        <img src="https://www.crittercontrol.com/crittercontrol/crittercontrol/media/CritterControl/Critters/Images/Muscovy%20Duck%20Images/muscovy-duck-picture-for-identification.jpg" alt="Canard 2">
+                        <a href="C:/Users/Amnesia/Documents/Duckduck/canards/muscovy.html">Muscovy</a>
+                        <p>Taille: Grand</p>
+                        <p>Couleur: Noir</p>
+                        <p>Sexe: Femelle</p>
+                        <p>Race: Muscovy</p>
+                        <p>Poids: Lourd</p>
+                    </div>
+                    <!-- Ajouter plus de produits ici -->
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Ma Boutique. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        function toggleFilters() {
+            const filters = document.getElementById('filters');
+            filters.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
