@@ -4,7 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogue - Ma Boutique</title>
-    <link rel="stylesheet" href="C:/Users/Amnesia/Documents/Duckduck/styles/catalogue.css">
+    <link rel="stylesheet" href="styles/catalogue.css">
+
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: center; /* Centre les images horizontalement */
+            align-items: center; /* Centre les images verticalement */
+            height: 200px; /* Hauteur fixe du conteneur pour centrer verticalement */
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px; /* Espacement entre les blocs */
+        }
+        img {
+            max-width: 300px; /* Largeur maximale */
+            max-height: 200px; /* Hauteur maximale */
+            width: auto; /* Largeur automatique pour conserver les proportions */
+            height: auto; /* Hauteur automatique pour conserver les proportions */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -13,9 +31,9 @@
                 <h1>Ma Boutique</h1>
             </div>
             <ul>
-                <li><a href="C:/Users/Amnesia/Documents/Duckduck/index.html">Accueil</a></li>
-                <li><a href="C:/Users/Amnesia/Documents/Duckduck/catalogue.html">Catalogue</a></li>
-                <li><a href="C:/Users/Amnesia/Documents/Duckduck/contact.html">Contact</a></li>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -77,8 +95,8 @@
                 <h3>Nos Canards</h3>
                 <div class="products-grid">
                     <div class="product">
-                        <img src="https://cdn.pixabay.com/photo/2017/01/14/02/22/duck-1978680_1280.png" alt="Canard 1">
-                        <h4>Canard 1</h4>
+                        <img src="images/colvert.webp" alt="Colvert" width="300" height="200">
+                        <h4>Colvert</h4>
                         <p>Taille: Moyen</p>
                         <p>Couleur: Blanc</p>
                         <p>Sexe: Mâle</p>
@@ -86,8 +104,9 @@
                         <p>Poids: Moyen</p>
                     </div>
                     <div class="product">
-                        <img src="https://www.crittercontrol.com/crittercontrol/crittercontrol/media/CritterControl/Critters/Images/Muscovy%20Duck%20Images/muscovy-duck-picture-for-identification.jpg" alt="Canard 2">
-                        <a href="C:/Users/Amnesia/Documents/Duckduck/canards/muscovy.html">Muscovy</a>
+                        <a href="canards/muscovy.html">
+                        <img src="images/muscovy.jpg" alt="Muscovy" width="300" height="200">
+                        <h4>Muscovy</h4>
                         <p>Taille: Grand</p>
                         <p>Couleur: Noir</p>
                         <p>Sexe: Femelle</p>

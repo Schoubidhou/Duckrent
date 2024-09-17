@@ -86,18 +86,78 @@
 </head>
 <body>
     <div class="container">
-        <h1>Page d'Achat de Vêtement</h1>
+        <h1 id="main-heading">Prêt à louer un(e) Muscovy ?</h1>
         <div class="product">
-            <img src="https://www.crittercontrol.com/crittercontrol/crittercontrol/media/CritterControl/Critters/Images/Muscovy%20Duck%20Images/muscovy-duck-picture-for-identification.jpg" alt="T-shirt">
+            <img src="../images/muscovy.jpg" alt="Muscovy" width="350" height="200">
             <div class="product-info">
-                <h2>T-shirt en Coton Bio</h2>
-                <p><strong>Description:</strong> Ce t-shirt en coton bio est doux et confortable, parfait pour un usage quotidien. Il est fabriqué à partir de coton 100% biologique, ce qui le rend à la fois respectueux de l'environnement et agréable à porter.</p>
-                <p><strong>Taille:</strong> Disponible en S, M, L, XL</p>
-                <p><strong>Couleur:</strong> Bleu Marine, Gris Clair, Blanc</p>
+                <h2>Muscovy</h2>
+                <p><strong>Description:</strong> Ce canard impressionne par sa taille généreuse, son plumage noir raffiné et son poids conséquent. En plus de son apparence remarquable, le Muscovy se distingue par son caractère calme et sa présence majestueuse.</p>
+                <p><strong>Taille:</strong> <span id="size">Grand</span></p>
+                <p><strong>Couleur:</strong> Noir, Blanc, Rouge</p>
+                <p><strong>Sexe:</strong>
+                    <select id="sexe" name="sexe">
+                        <option value="mâle">Mâle</option>
+                        <option value="femelle">Femelle</option>
+                    </select>
+                </p>
+                <p><strong>Âge:</strong>
+                    <select id="âge" name="âge">
+                        <option value="1mois">1 mois</option>
+                        <option value="6mois">6 mois</option>
+                        <option value="1an">1 an</option>
+                        <option value="2ans">2 ans</option>
+                    </select>
+                </p>
+                <p><strong>Poids:</strong> Lourd</p>
                 <p class="price">29,99 €</p>
                 <a href="#" class="btn">Ajouter au Panier</a>
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('sexe').addEventListener('change', updateText);
+        document.getElementById('âge').addEventListener('change', updateText);
+
+        function updateText() {
+            const sexe = document.getElementById('sexe').value;
+            const âge = document.getElementById('âge').value;
+            let message = '';
+            let size = '';
+
+            // Déterminer la taille basée sur l'âge
+            if (âge === '1mois') {
+                size = 'Petit (20-25 cm)';
+            } else if (âge === '6mois') {
+                size = 'Moyen (40-45 cm)';
+            } else if (âge === '1an') {
+                size = 'Moyen (50-55 cm)';
+            } else if (âge === '2ans') {
+                size = 'Grand (60-70 cm)';
+            }
+
+            // Déterminer le message basé sur le sexe et l'âge
+            if (sexe === 'mâle') {
+                if (âge === '1mois' || âge === '6mois') {
+                    message = "Prêt à louer un petit Muscovy ?";
+                } else {
+                    message = "Prêt à louer un grand Muscovy ?";
+                }
+            } else if (sexe === 'femelle') {
+                if (âge === '1mois' || âge === '6mois') {
+                    message = "Prêt à louer une petite Muscovy ?";
+                } else {
+                    message = "Prêt à louer une grande Muscovy ?";
+                }
+            }
+
+            // Mettre à jour le texte du titre et de la taille
+            document.getElementById('main-heading').textContent = message;
+            document.getElementById('size').textContent = size;
+        }
+
+        // Appel initial pour définir le texte correct en fonction des sélections par défaut
+        updateText();
+    </script>
 </body>
 </html>
