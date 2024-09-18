@@ -60,7 +60,7 @@ body {
 
 
 .hero {
-    background-image: url('C:/Users/Amnesia/Documents/Duckduck/images/preview.png');
+    background-image: url('/images/preview.png');
     background-size: cover;          /* L'image couvre toute la section */
     background-position: center;     /* Centre l'image */
     background-repeat: no-repeat;    /* Évite que l'image se répète */
