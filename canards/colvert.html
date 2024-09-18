@@ -167,7 +167,6 @@
 
 <script>
     function addToCart(productName, productPrice) {
-<<<<<<< Updated upstream
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         
         if (cartItems.length >= 1) {
@@ -182,7 +181,6 @@
         
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
         alert(`${productName} a été ajouté à votre panier.`);
-=======
       const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
   
       // Ajouter l'article au panier
@@ -203,7 +201,6 @@
       };
     
       alert(`${productName} a été ajouté à votre panier.`);
->>>>>>> Stashed changes
     }
 </script>
 
