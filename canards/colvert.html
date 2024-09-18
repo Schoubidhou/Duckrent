@@ -98,6 +98,7 @@
         }
     </style>
 </head>
+
 <body>
 
 <!-- En-tête / Header -->
@@ -160,7 +161,7 @@
             </p>
             <p><strong>Poids:</strong> Moyen (0.7 - 1.4 kg)</p>
             <p class="price">24,99 €</p>
-            <a onclick="addToCart('Colvert', 24.99)" href="#" class="btn">Ajouter au Panier</a>
+            <a onclick="addToCart('Colvert', 24.99)" href="javascript:void(0);" class="btn">Ajouter au Panier</a>
         </div>
     </div>
 </div>
@@ -180,27 +181,8 @@
         });
         
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        
         alert(`${productName} a été ajouté à votre panier.`);
-      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-  
-      // Ajouter l'article au panier
-      cartItems.push({
-        name: productName,
-        price: productPrice
-      });
-  
-      // Sauvegarder dans le localStorage
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-      localStorage.setItem('cartItems', JSON.stringify([product]));
-                
-      // Exemple d'ajout d'un article au panier avec un identifiant unique
-      const product = {
-      id: '86f56f96-8206-40a0-b97f-a5fbd0ea1cbe', // Identifiant unique du produit
-      name: 'Colvert',
-      price: 29.99
-      };
-    
-      alert(`${productName} a été ajouté à votre panier.`);
     }
 </script>
 
