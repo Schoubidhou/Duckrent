@@ -1,63 +1,51 @@
-* {
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f9f4; /* Un vert très doux */
+    color: #333;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-header {
-    width: 100%; /* Assure que l'en-tête occupe toute la largeur de la page */
-    background-color: #f8f8f8; /* Optionnel : ajoute une couleur de fond */
-    position: fixed; /* Fixe l'en-tête en haut de la page */
-    top: 0; /* Positionne l'en-tête en haut de la page */
-    left: 0; /* Positionne l'en-tête à gauche de la page */
-    z-index: 1000; /* Assure que l'en-tête est au-dessus des autres éléments */
-    /* Optionnel : ajouter une ombre pour le contraste */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Styliser le conteneur de navigation pour utiliser flexbox */
-nav {
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3 {
+    color: #004d40; /* Vert canard foncé */
+  }
+  
+  a {
+    color: #004d40;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Navbar */
+  nav ul {
+    list-style: none;
+    padding: 0;
     display: flex;
-    justify-content: space-between; /* Espacer les éléments */
-    align-items: center; /* Centrer les éléments verticalement */
-    padding: 15px 20px; /* Ajouter un peu de padding pour l'espacement */
-}
-
-/* Styliser le logo */
-.logo h1 {
-    margin: 0; /* Supprimer les marges par défaut */
-}
-
-/* Styliser la liste de navigation */
-nav ul {
-    list-style: none; /* Supprimer les puces de la liste */
-    margin: 0; /* Supprimer les marges par défaut */
-    padding: 0; /* Supprimer le padding par défaut */
-    display: flex; /* Utiliser flexbox pour aligner les éléments de la liste */
-}
-
-/* Styliser les éléments de la liste */
-nav ul li {
-    margin: 0 15px; /* Ajouter un espacement horizontal entre les éléments */
-}
-
-/* Styliser les liens */
-nav a {
-    text-decoration: none; /* Supprimer le soulignement des liens */
-    color: #333; /* Couleur du texte des liens */
-}
-
-/* Ajouter du padding au contenu de la page pour éviter qu'il ne soit caché sous l'en-tête */
-body {
-    padding-top: 60px; /* Ajuste cette valeur en fonction de la hauteur de l'en-tête */
-}
-
+    justify-content: space-around;
+    background-color: #004d40; /* Vert canard foncé */
+    margin: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav ul li a {
+    color: white;
+    padding: 14px 20px;
+    display: block;
+  }
+  
+  nav ul li a:hover {
+    background-color: #00796b; /* Vert canard un peu plus clair */
+    border-radius: 5px;
+  }
+  
 
 .hero {
     background-image: url('../images/preview.png');
@@ -150,3 +138,131 @@ body {
     font-weight: bold;
     color: #d9534f;
 }
+
+
+/* Main Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Buttons */
+  button {
+    background-color: #00796b; /* Vert canard clair */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #004d40; /* Vert canard foncé */
+  }
+  
+  button:disabled {
+    background-color: #b2dfdb; /* Couleur désactivée */
+    cursor: not-allowed;
+  }
+  
+  /* Card Styles (for cart items) */
+  .cart-item {
+    background-color: #ffffff;
+    border: 1px solid #b2dfdb;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-item h3 {
+    margin: 0;
+  }
+  
+  .cart-item p {
+    margin: 5px 0;
+  }
+  
+  /* Form Styles (for account, contact) */
+  form {
+    background-color: #ffffff;
+    border: 1px solid #b2dfdb;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"],
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #b2dfdb;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  form input[type="submit"] {
+    background-color: #00796b;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form input[type="submit"]:hover {
+    background-color: #004d40;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #004d40;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  /* Page-specific styling */
+  #cart-items ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #cart-items ul li {
+    padding: 10px;
+    border-bottom: 1px solid #b2dfdb;
+  }
+  
+  #items-list {
+    background-color: white;
+    border: 1px solid #b2dfdb;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  #cart-empty {
+    background-color: #fff3e0;
+    color: #bf360c;
+    padding: 10px;
+    border: 1px solid #fbc02d;
+    border-radius: 5px;
+    margin: 10px 0;
+  }
+  
+  /* Contact Page Form Specific */
+  form textarea {
+    height: 150px;
+  }
