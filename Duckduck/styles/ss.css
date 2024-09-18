@@ -1,0 +1,175 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f9f4; /* Un vert très doux */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3 {
+    color: #004d40; /* Vert canard foncé */
+  }
+  
+  a {
+    color: #004d40;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Navbar */
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: #004d40; /* Vert canard foncé */
+    margin: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav ul li a {
+    color: white;
+    padding: 14px 20px;
+    display: block;
+  }
+  
+  nav ul li a:hover {
+    background-color: #00796b; /* Vert canard un peu plus clair */
+    border-radius: 5px;
+  }
+  
+  /* Main Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Buttons */
+  button {
+    background-color: #00796b; /* Vert canard clair */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #004d40; /* Vert canard foncé */
+  }
+  
+  button:disabled {
+    background-color: #b2dfdb; /* Couleur désactivée */
+    cursor: not-allowed;
+  }
+  
+  /* Card Styles (for cart items) */
+  .cart-item {
+    background-color: #ffffff;
+    border: 1px solid #b2dfdb;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-item h3 {
+    margin: 0;
+  }
+  
+  .cart-item p {
+    margin: 5px 0;
+  }
+  
+  /* Form Styles (for account, contact) */
+  form {
+    background-color: #ffffff;
+    border: 1px solid #b2dfdb;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"],
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #b2dfdb;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  form input[type="submit"] {
+    background-color: #00796b;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form input[type="submit"]:hover {
+    background-color: #004d40;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #004d40;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  /* Page-specific styling */
+  #cart-items ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #cart-items ul li {
+    padding: 10px;
+    border-bottom: 1px solid #b2dfdb;
+  }
+  
+  #items-list {
+    background-color: white;
+    border: 1px solid #b2dfdb;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  #cart-empty {
+    background-color: #fff3e0;
+    color: #bf360c;
+    padding: 10px;
+    border: 1px solid #fbc02d;
+    border-radius: 5px;
+    margin: 10px 0;
+  }
+  
+  /* Contact Page Form Specific */
+  form textarea {
+    height: 150px;
+  }
+  

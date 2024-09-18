@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Panier</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+    <!-- En-tête / Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1><a href="index.html">Duck Rent</a></h1>
+            </div>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="account-menu" style="display: none;"><a href="account.html">Mon compte</a></li>
+                <li id="cart-menu" style="display: none;"><a href="panier.html">Mon panier</a></li>
+                <li id="login-menu"><a href="login.html">Se connecter</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        const SUPABASE_URL = 'https://rwexwwspziqnsxqjvywo.supabase.co'; // Remplace par ton URL Supabase
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3ZXh3d3NwemlxbnN4cWp2eXdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY2NTcyMjEsImV4cCI6MjA0MjIzMzIyMX0.6HN7gsTgEAyTb9hacQJhsO9sH4jRFkC4-Oa7RllxY6E'; // Remplace par ta clé ANON_KEY
+    
+        // Initialisation de Supabase
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    
+        // Vérification de la session de l'utilisateur connecté
+        async function checkUser() {
+          const { data: { session } } = await supabase.auth.getSession();
+          if (session) {
+            // Si l'utilisateur est connecté, afficher "Mon compte" et "Mon panier"
+            document.getElementById('account-menu').style.display = 'inline';
+            document.getElementById('cart-menu').style.display = 'inline';
+            document.getElementById('login-menu').style.display = 'none'; // Cacher "Se connecter"
+          }
+        }
+    
+        // Appeler la fonction checkUser au chargement de la page
+        checkUser();
+      </script>
+
+  <h1>Mon panier</h1>
+
+  <!-- Affichage des articles du panier -->
+  <div id="cart-items">
+    <h2>Vos articles :</h2>
+    <ul id="items-list"></ul>
+  </div>
+
+  <div id="cart-empty" style="display: none;">
+    <p>Votre panier est vide.</p>
+  </div>
+
+  <!-- Bouton pour vider le panier -->
+  <button id="empty-cart-button">Vider le panier</button>
+
+  <!-- Bouton pour finaliser la commande -->
+  <button id="checkout-button">Finaliser la commande</button>
+
+  <!-- Inclusion de la bibliothèque Supabase via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <!-- Inclusion du fichier auth.js -->
+  <script>
+
+    // Fonction pour récupérer les articles du panier depuis le localStorage
+    function loadCartItems() {
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+      const itemsList = document.getElementById('items-list');
+      itemsList.innerHTML = ''; // Vider la liste actuelle
+
+      if (cartItems.length === 0) {
+        document.getElementById('cart-items').style.display = 'none';
+        document.getElementById('cart-empty').style.display = 'block';
+      } else {
+        document.getElementById('cart-items').style.display = 'block';
+        document.getElementById('cart-empty').style.display = 'none';
+        cartItems.forEach((item, index) => {
+          const li = document.createElement('li');
+          li.textContent = `${item.name} - ${item.price}€`;
+          itemsList.appendChild(li);
+        });
+      }
+    }
+
+    // Charger les articles du panier au chargement de la page
+    loadCartItems();
+
+    // Vider le panier
+    document.getElementById('empty-cart-button').addEventListener('click', () => {
+      localStorage.removeItem('cartItems'); // Supprimer les articles du localStorage
+      loadCartItems(); // Recharger la liste vide
+      alert('Votre panier a été vidé.');
+    });
+
+    // Finaliser la commande (simple alerte pour cette démo)
+    document.getElementById('checkout-button').addEventListener('click', () => {
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      if (cartItems.length === 0) {
+        alert('Votre panier est vide.');
+      } else {
+        // Ici, tu peux traiter la commande (ex : paiement)
+        alert('Commande finalisée avec succès !');
+        localStorage.removeItem('cartItems'); // Vider le panier après la commande
+        loadCartItems(); // Recharger la liste vide
+      }
+    });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <title>Mon compte</title>
+</head>
+<body>
+
+    <!-- En-tête / Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1><a href="index.html">Duck Rent</a></h1>
+            </div>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="account-menu" style="display: none;"><a href="account.html">Mon compte</a></li>
+                <li id="cart-menu" style="display: none;"><a href="panier.html">Mon panier</a></li>
+                <li id="login-menu"><a href="login.html">Se connecter</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        const SUPABASE_URL = 'https://rwexwwspziqnsxqjvywo.supabase.co'; // Remplace par ton URL Supabase
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3ZXh3d3NwemlxbnN4cWp2eXdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY2NTcyMjEsImV4cCI6MjA0MjIzMzIyMX0.6HN7gsTgEAyTb9hacQJhsO9sH4jRFkC4-Oa7RllxY6E'; // Remplace par ta clé ANON_KEY
+    
+        // Initialisation de Supabase
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    
+        // Vérification de la session de l'utilisateur connecté
+        async function checkUser() {
+          const { data: { session } } = await supabase.auth.getSession();
+          if (session) {
+            // Si l'utilisateur est connecté, afficher "Mon compte" et "Mon panier"
+            document.getElementById('account-menu').style.display = 'inline';
+            document.getElementById('cart-menu').style.display = 'inline';
+            document.getElementById('login-menu').style.display = 'none'; // Cacher "Se connecter"
+          }
+        }
+    
+        // Appeler la fonction checkUser au chargement de la page
+        checkUser();
+      </script>
+
+  <h1>Bienvenue dans votre espace personnel !</h1>
+
+  <button id="logout-button">Se déconnecter</button>
+
+  <script>
+  ElementById('logout-button');
+    logoutButton.addEventListener('click', async () => {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error('Erreur lors de la déconnexion :', error.message);
+      } else {
+        window.location.href = "login.html"; // Redirige vers la page de connexion après déconnexion
+      }
+    });
+
+  </script>
+
+</body>
+</html>
