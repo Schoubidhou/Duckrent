@@ -4,10 +4,9 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Location de Canard Mulard</title>
+    <title>Canard Mulard - Duck Rent</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -50,8 +49,6 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             flex: 1;
-            object-fit: cover; /* Assure que l'image couvre tout l'espace alloué */
-            aspect-ratio: 16 / 9; /* Maintient un ratio d'aspect 16:9 */
         }
 
         .product-info {
@@ -121,24 +118,20 @@
 </header>
 
 <script>
-    const SUPABASE_URL = 'https://rwexwwspziqnsxqjvywo.supabase.co'; // Remplace par ton URL Supabase
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3ZXh3d3NwemlxbnN4cWp2eXdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY2NTcyMjEsImV4cCI6MjA0MjIzMzIyMX0.6HN7gsTgEAyTb9hacQJhsO9sH4jRFkC4-Oa7RllxY6E'; // Remplace par ta clé ANON_KEY
+    const SUPABASE_URL = 'https://rwexwwspziqnsxqjvywo.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3ZXh3d3NwemlxbnN4cWp2eXdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY2NTcyMjEsImV4cCI6MjA0MjIzMzIyMX0.6HN7gsTgEAyTb9hacQJhsO9sH4jRFkC4-Oa7RllxY6E';
 
-    // Initialisation de Supabase
     const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    // Vérification de la session de l'utilisateur connecté
     async function checkUser() {
         const { data: { session } } = await supabase.auth.getSession();
         if (session) {
-            // Si l'utilisateur est connecté, afficher "Mon compte" et "Mon panier"
             document.getElementById('account-menu').style.display = 'inline';
             document.getElementById('cart-menu').style.display = 'inline';
-            document.getElementById('login-menu').style.display = 'none'; // Cacher "Se connecter"
+            document.getElementById('login-menu').style.display = 'none';
         }
     }
 
-    // Appeler la fonction checkUser au chargement de la page
     checkUser();
 </script>
 
@@ -148,12 +141,10 @@
         <img src="../images/mulard.jpeg" alt="Mulard">
         <div class="product-info">
             <h2>Mulard</h2>
-            <p><strong>Description:</strong> Ce canard impressionne par sa taille généreuse, son plumage noir raffiné et
-                son poids conséquent. En plus de son apparence remarquable, le Mulard se distingue par son caractère
-                calme et sa présence majestueuse.</p>
-            <p><strong>Taille:</strong> <span id="size">Grand</span></p>
-            <p><strong>Couleur:</strong> Noir, Blanc, Rouge</p>
-            <p><strong>Sexe:</strong>
+            <p align="justify" >Le canard mulard, avec son plumage doux souvent blanc tacheté de noir, est un hybride robuste et paisible. Son allure tranquille et sa grande taille lui donnent un air rassurant et attendrissant.</p>
+                <p><strong>Taille:</strong> <span id="size">Moyen</span></p>
+                <p><strong>Couleur:</strong> Noir, Blanc, Rouge</p>
+                <p><strong>Sexe:</strong>
                 <select id="sexe" name="sexe">
                     <option value="mâle">Mâle</option>
                     <option value="femelle">Femelle</option>
@@ -167,29 +158,37 @@
                     <option value="2ans">2 ans</option>
                 </select>
             </p>
-            <p><strong>Poids:</strong> Lourd</p>
+            <p><strong>Poids:</strong> Moyen (0.7 - 1.4 kg)</p>
             <p class="price">29,99 €</p>
-            <a onclick="addToCart('Mulard', 29.99)" href="#" class="btn">Ajouter au Panier</a>
+            <a onclick="addToCart('Mulard', 29.99, '6563c01d-231c-4843-959e-caf0c4f5cc4e')" href="#" class="btn">Ajouter au Panier</a>
+
         </div>
     </div>
 </div>
 
+
 <script>
-    function addToCart(productName, productPrice) {
-        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-        // Ajouter l'article au panier
-        cartItems.push({
-            name: productName,
-            price: productPrice
-        });
-
-        // Sauvegarder dans le localStorage
-        localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-        alert(`${productName} a été ajouté à votre panier.`);
+    function addToCart(productName, productPrice, productId) {
+      // Récupérer les articles actuels du panier ou initialiser avec un tableau vide
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+      // Créer l'objet produit avec un identifiant unique
+      const product = {
+        name: productName,
+        id: productId,  // Identifiant unique du produit
+        price: productPrice
+      };
+    
+      // Ajouter l'article au panier
+      cartItems.push(product);
+    
+      // Sauvegarder la nouvelle liste d'articles dans le localStorage
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
+      // Afficher un message de confirmation
+      alert(`${productName} a été ajouté à votre panier avec l'ID ${productId}.`);
     }
-</script>
+  </script>  
 
 <script>
     document.getElementById('sexe').addEventListener('change', updateText);

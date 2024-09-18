@@ -98,7 +98,6 @@
         }
     </style>
 </head>
-
 <body>
 
 <!-- En-tête / Header -->
@@ -142,7 +141,7 @@
         <img src="../images/colvert.webp" alt="Colvert" width="350" height="200">
         <div class="product-info">
             <h2>Colvert</h2>
-            <p><strong>Description:</strong> Le canard colvert est l'espèce de canard la plus répandue et reconnaissable. Avec son plumage coloré et son comportement vif, c'est un favori des amateurs d'oiseaux et des chasseurs. Le mâle arbore une tête vert irisé caractéristique, tandis que la femelle a un plumage plus discret, parfait pour le camouflage.</p>
+            <p align="justify"> Le canard colvert est l'espèce de canard la plus répandue et reconnaissable. Avec son plumage coloré et son comportement vif, c'est un favori des amateurs d'oiseaux et des chasseurs. Le mâle arbore une tête vert irisé caractéristique, tandis que la femelle a un plumage plus discret, parfait pour le camouflage.</p>
             <p><strong>Taille:</strong> <span id="size">Moyen</span></p>
             <p><strong>Couleur:</strong> Vert, Brun, Bleu (mâle) / Brun tacheté (femelle)</p>
             <p><strong>Sexe:</strong>
@@ -161,31 +160,35 @@
             </p>
             <p><strong>Poids:</strong> Moyen (0.7 - 1.4 kg)</p>
             <p class="price">24,99 €</p>
-            <a onclick="addToCart('Colvert', 24.99)" href="javascript:void(0);" class="btn">Ajouter au Panier</a>
+            <a onclick="addToCart('Colvert', 24.99, '86f56f96-8206-40a0-b97f-a5fbd0ea1cbe')" href="#" class="btn">Ajouter au Panier</a>
+
         </div>
     </div>
 </div>
 
 <script>
-    function addToCart(productName, productPrice) {
-        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        
-        if (cartItems.length >= 1) {
-            alert("Impossible de louer plusieurs canards");
-            return;
-        }
-        
-        cartItems.push({
-            name: productName,
-            price: productPrice
-        });
-        
-        localStorage.setItem('cartItems', JSON.stringify(cartItems));
-        
-        alert(`${productName} a été ajouté à votre panier.`);
+    function addToCart(productName, productPrice, productId) {
+      // Récupérer les articles actuels du panier ou initialiser avec un tableau vide
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+      // Créer l'objet produit avec un identifiant unique
+      const product = {
+        name: productName,
+        id: productId,  // Identifiant unique du produit
+        price: productPrice
+      };
+    
+      // Ajouter l'article au panier
+      cartItems.push(product);
+    
+      // Sauvegarder la nouvelle liste d'articles dans le localStorage
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
+      // Afficher un message de confirmation
+      alert(`${productName} a été ajouté à votre panier avec l'ID ${productId}.`);
     }
-</script>
-
+  </script>  
+  
 <script>
     document.getElementById('sexe').addEventListener('change', updateText);
     document.getElementById('âge').addEventListener('change', updateText);

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <link rel="stylesheet" href="../styles/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<link rel="stylesheet" href="../styles/style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Achat de Vêtement</title>
+    <title>Canard Muscovy - Duck Rent</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -14,6 +14,7 @@
             margin: 0;
             padding: 0;
         }
+
         .container {
             max-width: 900px;
             margin: auto;
@@ -24,6 +25,7 @@
             margin-top: 30px;
             border: 1px solid #ddd;
         }
+
         h1 {
             text-align: center;
             color: #333;
@@ -31,6 +33,7 @@
             font-size: 2.5em;
             font-weight: bold;
         }
+
         .product {
             display: flex;
             flex-wrap: wrap;
@@ -39,6 +42,7 @@
             padding-bottom: 20px;
             margin-bottom: 20px;
         }
+
         .product img {
             max-width: 100%;
             height: auto;
@@ -46,26 +50,31 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             flex: 1;
         }
+
         .product-info {
             flex: 2;
             margin-left: 20px;
         }
+
         .product-info h2 {
             color: #00796b;
             font-size: 2em;
             margin: 0;
         }
+
         .product-info p {
             margin: 10px 0;
             color: #555;
             line-height: 1.6;
         }
+
         .price {
             font-size: 28px;
             color: #d32f2f;
             font-weight: bold;
             margin: 20px 0;
         }
+
         .btn {
             display: inline-block;
             padding: 12px 24px;
@@ -79,150 +88,144 @@
             text-align: center;
             transition: background-color 0.3s ease;
         }
+
         .btn:hover {
             background-color: #004d40;
         }
+
         .btn:focus {
             outline: none;
         }
     </style>
 </head>
-</body>
+<body>
 
-    <!-- En-tête / Header -->
-    <header>
-        <nav>
-            <div class="menu">
-                <h1><a href="../index.html">Duck Rent</a></h1>
-            </div>
-            <ul>
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../catalogue.html">Catalogue</a></li>
-                <li><a href="../contact.html">Contact</a></li>
-                <li id="account-menu" style="display: none;"><a href="../account.html">Mon compte</a></li>
-                <li id="cart-menu" style="display: none;"><a href="../panier.html">Mon panier</a></li>
-                <li id="login-menu"><a href="../connexion.html">Se connecter</a></li>
-            </ul>
-        </nav>
-    </header>
+<!-- En-tête / Header -->
+<header>
+    <nav>
+        <div class="menu">
+            <h1><a href="../index.html">Duck Rent</a></h1>
+        </div>
+        <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../catalogue.html">Catalogue</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li id="account-menu" style="display: none;"><a href="../account.html">Mon compte</a></li>
+            <li id="cart-menu" style="display: none;"><a href="../panier.html">Mon panier</a></li>
+            <li id="login-menu"><a href="../connexion.html">Se connecter</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <script>
-        const SUPABASE_URL = 'https://rwexwwspziqnsxqjvywo.supabase.co'; // Remplace par ton URL Supabase
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3ZXh3d3NwemlxbnN4cWp2eXdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY2NTcyMjEsImV4cCI6MjA0MjIzMzIyMX0.6HN7gsTgEAyTb9hacQJhsO9sH4jRFkC4-Oa7RllxY6E'; // Remplace par ta clé ANON_KEY
-    
-        // Initialisation de Supabase
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    
-        // Vérification de la session de l'utilisateur connecté
-        async function checkUser() {
-          const { data: { session } } = await supabase.auth.getSession();
-          if (session) {
-            // Si l'utilisateur est connecté, afficher "Mon compte" et "Mon panier"
+<script>
+    const SUPABASE_URL = 'https://rwexwwspziqnsxqjvywo.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3ZXh3d3NwemlxbnN4cWp2eXdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY2NTcyMjEsImV4cCI6MjA0MjIzMzIyMX0.6HN7gsTgEAyTb9hacQJhsO9sH4jRFkC4-Oa7RllxY6E';
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function checkUser() {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session) {
             document.getElementById('account-menu').style.display = 'inline';
             document.getElementById('cart-menu').style.display = 'inline';
-            document.getElementById('login-menu').style.display = 'none'; // Cacher "Se connecter"
-          }
+            document.getElementById('login-menu').style.display = 'none';
         }
-    
-        // Appeler la fonction checkUser au chargement de la page
-        checkUser();
-      </script>
+    }
 
-    <div class="container">
-        <h1 id="main-heading">Prêt à louer un(e) Muscovy ?</h1>
-        <div class="product">
-            <img src="../images/muscovy.jpg" alt="Muscovy" width="350" height="200">
-            <div class="product-info">
-                <h2>Muscovy</h2>
-                <p><strong>Description:</strong> Ce canard impressionne par sa taille généreuse, son plumage noir raffiné et son poids conséquent. En plus de son apparence remarquable, le Muscovy se distingue par son caractère calme et sa présence majestueuse.</p>
-                <p><strong>Taille:</strong> <span id="size">Grand</span></p>
-                <p><strong>Couleur:</strong> Noir, Blanc, Rouge</p>
-                <p><strong>Sexe:</strong>
-                    <select id="sexe" name="sexe">
-                        <option value="mâle">Mâle</option>
-                        <option value="femelle">Femelle</option>
-                    </select>
-                </p>
-                <p><strong>Âge:</strong>
-                    <select id="âge" name="âge">
-                        <option value="1mois">1 mois</option>
-                        <option value="6mois">6 mois</option>
-                        <option value="1an">1 an</option>
-                        <option value="2ans">2 ans</option>
-                    </select>
-                </p>
-                <p><strong>Poids:</strong> Lourd</p>
-                <p class="price">29,99 €</p>
-                <a onclick="addToCart('Muscovy', 25.99)" href="#" class="btn">Ajouter au Panier</a>
-            </div>
+    checkUser();
+</script>
+
+<div class="container">
+    <h1 id="main-heading">Prêt à louer un(e) Muscovy ?</h1>
+    <div class="product">
+        <img src="../images/muscovy.jpg" alt="Muscovy" width="350" height="200">
+        <div class="product-info">
+            <h2>Muscovy</h2>
+            <p align="justify"> Ce canard impressionne par sa taille généreuse, son plumage noir raffiné et son poids conséquent. En plus de son apparence remarquable, le Muscovy se distingue par son caractère calme et sa présence majestueuse.</p>
+            <p><strong>Taille:</strong> <span id="size">Grand</span></p>
+            <p><strong>Couleur:</strong> Noir, Blanc, Rouge</p>
+            <p><strong>Sexe:</strong>
+                <select id="sexe" name="sexe">
+                    <option value="mâle">Mâle</option>
+                    <option value="femelle">Femelle</option>
+                </select>
+            </p>
+            <p><strong>Âge:</strong>
+                <select id="âge" name="âge">
+                    <option value="1mois">1 mois</option>
+                    <option value="6mois">6 mois</option>
+                    <option value="1an">1 an</option>
+                    <option value="2ans">2 ans</option>
+                </select>
+            </p>
+            <p><strong>Poids:</strong> Lourd</p>
+            <p class="price">29,99 €</p>
+            <a onclick="addToCart('Muscovy', 24.99, '8bbab421-6e5c-4a51-899d-deb0bdfe4b93')" href="#" class="btn">Ajouter au Panier</a>
+
         </div>
     </div>
+</div>
 
-    <script>
-        function addToCart(productName, productPrice) {
-          const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-      
-          // Ajouter l'article au panier
-          cartItems.push({
-            name: productName,
-            price: productPrice
-          });
-      
-          // Sauvegarder dans le localStorage
-          localStorage.setItem('cartItems', JSON.stringify(cartItems));
-          localStorage.setItem('cartItems', JSON.stringify([product]));
-                    
-          // Exemple d'ajout d'un article au panier avec un identifiant unique
-          const product = {
-          id: '8bbab421-6e5c-4a51-899d-deb0bdfe4b93', // Identifiant unique du produit
-          name: 'Muscovy',
-          price: 29.99
-          };
-        
-          alert(`${productName} a été ajouté à votre panier.`);
+<script>
+    function addToCart(productName, productPrice, productId) {
+      // Récupérer les articles actuels du panier ou initialiser avec un tableau vide
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+      // Créer l'objet produit avec un identifiant unique
+      const product = {
+        name: productName,
+        id: productId,  // Identifiant unique du produit
+        price: productPrice
+      };
+    
+      // Ajouter l'article au panier
+      cartItems.push(product);
+    
+      // Sauvegarder la nouvelle liste d'articles dans le localStorage
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
+      // Afficher un message de confirmation
+      alert(`${productName} a été ajouté à votre panier avec l'ID ${productId}.`);
+    }
+  </script>  
+
+<script>
+    document.getElementById('sexe').addEventListener('change', updateText);
+    document.getElementById('âge').addEventListener('change', updateText);
+
+    function updateText() {
+        const sexe = document.getElementById('sexe').value;
+        const âge = document.getElementById('âge').value;
+        let message = '';
+        let size = '';
+
+        if (âge === '1mois') {
+            size = 'Petit (15-20 cm)';
+        } else if (âge === '6mois') {
+            size = 'Moyen (35-40 cm)';
+        } else if (âge === '1an') {
+            size = 'Moyen (45-50 cm)';
+        } else if (âge === '2ans') {
+            size = 'Grand (50-60 cm)';
         }
-      </script>
 
-    <script>
-        document.getElementById('sexe').addEventListener('change', updateText);
-        document.getElementById('âge').addEventListener('change', updateText);
-
-        function updateText() {
-            const sexe = document.getElementById('sexe').value;
-            const âge = document.getElementById('âge').value;
-            let message = '';
-            let size = '';
-
-            // Déterminer la taille basée sur l'âge
-            if (âge === '1mois') {
-                size = 'Petit (20-25 cm)';
-            } else if (âge === '6mois') {
-                size = 'Moyen (40-45 cm)';
-            } else if (âge === '1an') {
-                size = 'Moyen (50-55 cm)';
-            } else if (âge === '2ans') {
-                size = 'Grand (60-70 cm)';
+        if (sexe === 'mâle') {
+            if (âge === '1mois' || âge === '6mois') {
+                message = "Prêt à louer un petit Muscovy ?";
+            } else {
+                message = "Prêt à louer un grand Muscovy ?";
             }
-
-            // Déterminer le message basé sur le sexe et l'âge
-            if (sexe === 'mâle') {
-                if (âge === '1mois' || âge === '6mois') {
-                    message = "Prêt à louer un petit Muscovy ?";
-                } else {
-                    message = "Prêt à louer un grand Muscovy ?";
-                }
-            } else if (sexe === 'femelle') {
-                if (âge === '1mois' || âge === '6mois') {
-                    message = "Prêt à louer une petite Muscovy ?";
-                } else {
-                    message = "Prêt à louer une grande Muscovy ?";
-                }
+        } else if (sexe === 'femelle') {
+            if (âge === '1mois' || âge === '6mois') {
+                message = "Prêt à louer une petite Muscovy ?";
+            } else {
+                message = "Prêt à louer une grande Muscovy ?";
             }
-
-            // Mettre à jour le texte du titre et de la taille
-            document.getElementById('main-heading').textContent = message;
-            document.getElementById('size').textContent = size;
         }
+
+        document.getElementById('main-heading').textContent = message;
+        document.getElementById('size').textContent = size;
+    }
 
         
         // Appel initial pour définir le texte correct en fonction des sélections par défaut
