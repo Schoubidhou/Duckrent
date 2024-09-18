@@ -70,7 +70,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
   <script>
-
     // Fonction pour récupérer les articles du panier depuis le localStorage
     function loadCartItems() {
       const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -108,13 +107,13 @@
       if (cartItems.length === 0) {
         alert('Votre panier est vide.');
       } else {
-        const lemonSqueezyUrl = 'https://duckrent.lemonsqueezy.com/buy/8bbab421-6e5c-4a51-899d-deb0bdfe4b93';
+        const productId = cartItems[0].id; // Récupérer l'identifiant du produit
+        const lemonSqueezyUrl = `https://duckrent.lemonsqueezy.com/buy/${productId}`;
         window.location.href = lemonSqueezyUrl; // Redirection vers Lemon Squeezy
         localStorage.removeItem('cartItems'); // Vider le panier après la commande
         loadCartItems(); // Recharger la liste vide
       }
     });
-
   </script>
 
 </body>
