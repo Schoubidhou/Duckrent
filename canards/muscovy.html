@@ -170,7 +170,15 @@
       
           // Sauvegarder dans le localStorage
           localStorage.setItem('cartItems', JSON.stringify(cartItems));
-      
+          localStorage.setItem('cartItems', JSON.stringify([product]));
+                    
+          // Exemple d'ajout d'un article au panier avec un identifiant unique
+          const product = {
+          id: '8bbab421-6e5c-4a51-899d-deb0bdfe4b93', // Identifiant unique du produit
+          name: 'Produit Test',
+          price: 29.99
+          };
+        
           alert(`${productName} a été ajouté à votre panier.`);
         }
       </script>
