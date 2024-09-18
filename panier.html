@@ -74,7 +74,6 @@
     // Fonction pour récupérer les articles du panier depuis le localStorage
     function loadCartItems() {
       const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
       const itemsList = document.getElementById('items-list');
       itemsList.innerHTML = ''; // Vider la liste actuelle
 
@@ -84,11 +83,10 @@
       } else {
         document.getElementById('cart-items').style.display = 'block';
         document.getElementById('cart-empty').style.display = 'none';
-        cartItems.forEach((item, index) => {
-          const li = document.createElement('li');
-          li.textContent = `${item.name} - ${item.price}€`;
-          itemsList.appendChild(li);
-        });
+        const item = cartItems[0]; // Nous savons qu'il n'y a qu'un seul élément
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ${item.price}€`;
+        itemsList.appendChild(li);
       }
     }
 

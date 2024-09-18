@@ -168,10 +168,17 @@
 <script>
     function addToCart(productName, productPrice) {
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        
+        if (cartItems.length >= 1) {
+            alert("Impossible de louer plusieurs canards");
+            return;
+        }
+        
         cartItems.push({
             name: productName,
             price: productPrice
         });
+        
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
         alert(`${productName} a été ajouté à votre panier.`);
     }
