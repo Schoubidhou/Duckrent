@@ -24,6 +24,25 @@
             width: auto; /* Largeur automatique pour conserver les proportions */
             height: auto; /* Hauteur automatique pour conserver les proportions */
         }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Crée 3 colonnes de largeur égale */
+            gap: 20px; /* Espace égal entre les éléments */
+            justify-content: center;
+        }
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Garde les proportions de l'image tout en remplissant l'espace */
+            border-radius: 8px;
+        }
     </style>
   </head>
   <body>
@@ -74,13 +93,22 @@
                 <h3>Nos Canards</h3>
                 <div class="products-grid">
                     <div class="product">
-                        <img src="images/colvert.webp" alt="Colvert" width="300" height="200">
-                        <h4>Colvert</h4>
+                        <a href="canards/colvert.html">
+                            <img src="images/colvert.webp" alt="Colvert">
+                            <h4>Colvert</h4>
+                        </a>
                     </div>
                     <div class="product">
                         <a href="canards/muscovy.html">
-                        <img src="images/muscovy.jpg" alt="Muscovy" width="300" height="200">
-                        <h4>Muscovy</h4>
+                            <img src="images/muscovy.jpg" alt="Muscovy">
+                            <h4>Muscovy</h4>
+                        </a>
+                    </div>
+                    <div class="product">
+                        <a href="canards/mulard.html">
+                            <img src="images/mulard.jpeg" alt="Mulard">
+                            <h4>Mulard</h4>
+                        </a>
                     </div>
                     <!-- Ajouter plus de produits ici -->
                 </div>
