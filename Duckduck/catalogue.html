@@ -28,7 +28,7 @@
     <header>
         <nav>
             <div class="logo">
-                <h1>Ma Boutique</h1>
+                <h1><a href="index.html">Duck Rent</a></h1>
             </div>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
@@ -39,56 +39,6 @@
     </header>
 
     <main>
-        <!-- Filtres (volet rétractable) -->
-        <aside class="filters" id="filters">
-            <div class="filters-header">
-                <span class="filters-title">Filtrer par</span>
-                <button class="filters-toggle" onclick="toggleFilters()">&#9776;</button>
-            </div>
-            <form id="filters-form">
-                <label for="size">Taille :</label>
-                <select id="size" name="size">
-                    <option value="">-- Sélectionner --</option>
-                    <option value="small">Petit</option>
-                    <option value="medium">Moyen</option>
-                    <option value="large">Grand</option>
-                </select>
-
-                <label for="color">Couleur :</label>
-                <select id="color" name="color">
-                    <option value="">-- Sélectionner --</option>
-                    <option value="white">Blanc</option>
-                    <option value="black">Noir</option>
-                    <option value="brown">Marron</option>
-                </select>
-
-                <label for="sex">Sexe :</label>
-                <select id="sex" name="sex">
-                    <option value="">-- Sélectionner --</option>
-                    <option value="male">Mâle</option>
-                    <option value="female">Femelle</option>
-                </select>
-
-                <label for="breed">Race :</label>
-                <select id="breed" name="breed">
-                    <option value="">-- Sélectionner --</option>
-                    <option value="mallard">Colvert</option>
-                    <option value="muskovy">Muscovy</option>
-                    <option value="pekin">Pékin</option>
-                </select>
-
-                <label for="weight">Poids :</label>
-                <select id="weight" name="weight">
-                    <option value="">-- Sélectionner --</option>
-                    <option value="light">Léger</option>
-                    <option value="medium">Moyen</option>
-                    <option value="heavy">Lourd</option>
-                </select>
-
-                <button type="submit">Appliquer les filtres</button>
-            </form>
-        </aside>
-
         <!-- Contenu principal -->
         <section class="catalogue">
             <section class="products">
@@ -97,21 +47,11 @@
                     <div class="product">
                         <img src="images/colvert.webp" alt="Colvert" width="300" height="200">
                         <h4>Colvert</h4>
-                        <p>Taille: Moyen</p>
-                        <p>Couleur: Blanc</p>
-                        <p>Sexe: Mâle</p>
-                        <p>Race: Colvert</p>
-                        <p>Poids: Moyen</p>
                     </div>
                     <div class="product">
                         <a href="canards/muscovy.html">
                         <img src="images/muscovy.jpg" alt="Muscovy" width="300" height="200">
                         <h4>Muscovy</h4>
-                        <p>Taille: Grand</p>
-                        <p>Couleur: Noir</p>
-                        <p>Sexe: Femelle</p>
-                        <p>Race: Muscovy</p>
-                        <p>Poids: Lourd</p>
                     </div>
                     <!-- Ajouter plus de produits ici -->
                 </div>
