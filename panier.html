@@ -69,7 +69,6 @@
   <!-- Inclusion de la bibliothèque Supabase via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
-  <!-- Inclusion du fichier auth.js -->
   <script>
 
     // Fonction pour récupérer les articles du panier depuis le localStorage
@@ -103,14 +102,14 @@
       alert('Votre panier a été vidé.');
     });
 
-    // Finaliser la commande (simple alerte pour cette démo)
+    // Finaliser la commande et rediriger vers Lemon Squeezy
     document.getElementById('checkout-button').addEventListener('click', () => {
       const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
       if (cartItems.length === 0) {
         alert('Votre panier est vide.');
       } else {
-        // Ici, tu peux traiter la commande (ex : paiement)
-        alert('Commande finalisée avec succès !');
+        const lemonSqueezyUrl = 'https://duckrent.lemonsqueezy.com/buy/8bbab421-6e5c-4a51-899d-deb0bdfe4b93';
+        window.location.href = lemonSqueezyUrl; // Redirection vers Lemon Squeezy
         localStorage.removeItem('cartItems'); // Vider le panier après la commande
         loadCartItems(); // Recharger la liste vide
       }
