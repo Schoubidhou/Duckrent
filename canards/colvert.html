@@ -167,6 +167,7 @@
 
 <script>
     function addToCart(productName, productPrice) {
+<<<<<<< Updated upstream
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         
         if (cartItems.length >= 1) {
@@ -181,6 +182,28 @@
         
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
         alert(`${productName} a été ajouté à votre panier.`);
+=======
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  
+      // Ajouter l'article au panier
+      cartItems.push({
+        name: productName,
+        price: productPrice
+      });
+  
+      // Sauvegarder dans le localStorage
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      localStorage.setItem('cartItems', JSON.stringify([product]));
+                
+      // Exemple d'ajout d'un article au panier avec un identifiant unique
+      const product = {
+      id: '86f56f96-8206-40a0-b97f-a5fbd0ea1cbe', // Identifiant unique du produit
+      name: 'Colvert',
+      price: 29.99
+      };
+    
+      alert(`${productName} a été ajouté à votre panier.`);
+>>>>>>> Stashed changes
     }
 </script>
 
